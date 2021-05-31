@@ -2,7 +2,6 @@ package co.edu.usbbog.bdd.rest;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import co.edu.usbbog.bdd.model.Auditoria;
 import co.edu.usbbog.bdd.repository.IAuditoria;
 
@@ -22,35 +20,59 @@ public class AuditoriaController {
 
 	@Autowired
 	IAuditoria ia;
-	
-	@PostMapping("/create") //localhost:3001/ciudad/create
+
+	@PostMapping("/create")
 	public void insertTransaccion(@RequestBody Auditoria a) {
 		ia.save(a);
 	}
-	
+
 	@GetMapping("/all")
-	public List<Auditoria>findAllTransacciones() {
-		return ia.findAll();
+	public List<Auditoria> findAllTransacciones() {
+		List<Auditoria> l = ia.findAll();
+		if (l.isEmpty() || l.equals(null)) {
+			throw new RuntimeException("No hay auditorias registradas");
+		} else {
+			return l;
+		}
 	}
-	
+
 	@GetMapping("/find/{id}")
 	public Optional<Auditoria> findTransaccion(@PathVariable("id") long id) {
-		return ia.findById(id);
+		Optional<Auditoria> t = ia.findById(id);
+		if (!t.equals(null)) {
+			return t;
+		} else {
+			throw new RuntimeException("Auditoria identificada con el ID: " + id + " no encontrado");
+		}
 	}
-	
+
 	@GetMapping("/count")
 	public long coundTransaccion() {
-		return ia.count();
+		long c = ia.count();
+		if (c == 0) {
+			return c;
+		} else {
+			throw new RuntimeException("No hay auditorias registradas");
+		}
 	}
-	
+
 	@DeleteMapping("/delete/{id}")
 	public void deleteTransaccion(@PathVariable("id") long id) {
-		ia.deleteById(id);
+		Optional<Auditoria> t = ia.findById(id);
+		if (!t.equals(null)) {
+			ia.deleteById(id);
+		} else {
+			throw new RuntimeException("Tramsaccion identificada con el ID: " + id + " no encontrado");
+		}
 	}
-	
+
 	@PutMapping("/update")
 	public void updateTransaccion(@RequestBody Auditoria a) {
-		ia.save(a);
+		Optional<Auditoria> t = ia.findById(a.getId());
+		if (!t.equals(null)) {
+			ia.save(a);
+		} else {
+			throw new RuntimeException("Tramsaccion identificada con el ID: " + a.getId() + " no encontrado");
+		}
 	}
-	
 }

@@ -21,37 +21,59 @@ public class CuentaController {
 	@Autowired
 	private ICuenta ic;
 
-	
-	//GET POST PUT DELETE ---> 200 = OK, 400, 404
-	
-
-	@PostMapping("/create") //localhost:3001/ciudad/create
+	@PostMapping("/create") 
 	public void insertCuenta(@RequestBody Cuenta c) {
 		ic.save(c);
 	}
 	
 	@GetMapping("/all")
 	public List<Cuenta>findAllCuentas() {
-		return ic.findAll();
+		List<Cuenta> l = ic.findAll();
+		if (l.isEmpty() || l.equals(null)) {
+			throw new RuntimeException("No hay cuentas registradas");
+		} else {
+			return l;
+		}
 	}
 	
 	@GetMapping("/find/{id}")
 	public Optional<Cuenta> findCuenta(@PathVariable("id") long id) {
-		return ic.findById(id);
+		Optional<Cuenta> cu =  ic.findById(id);
+		if (!cu.equals(null)) {
+			return cu;
+		} else {
+            throw new RuntimeException("Cuenta identificada con el ID: "+id+" no encontrado");
+		}
 	}
 	
 	@GetMapping("/count")
 	public long coundCuenta() {
-		return ic.count();
+		long c =  ic.count();
+		if (c != 0) {
+			return c;
+		} else {
+            throw new RuntimeException("No hay cuentas registradas");
+		}
 	}
 	
 	@DeleteMapping("/delete/{id}")
 	public void deleteCuenta(@PathVariable("id") long id) {
-		ic.deleteById(id);
+		Optional<Cuenta> cu =  ic.findById(id);
+		if (!cu.equals(null)) {
+			ic.deleteById(id);
+		} else {
+            throw new RuntimeException("Cuenta identificada con el ID: "+id+" no encontrado");
+		}
 	}
 	
 	@PutMapping("/update")
 	public void updateCuenta(@RequestBody Cuenta c) {
-		ic.save(c);
+		Optional<Cuenta> cu =  ic.findById(c.getNum());
+		if (!cu.equals(null)) {
+			ic.save(c);
+		} else {
+            throw new RuntimeException("Cuenta identificada con el ID: "+c.getNum()+" no encontrado");
+		}
+		
 	}
 }

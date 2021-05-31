@@ -23,36 +23,61 @@ public class CiudadController {
 	@Autowired
 	private ICiudad ic;
 	
-	//GET POST PUT DELETE ---> 200 = OK, 400, 404
-	
 
-	@PostMapping("/create") //localhost:3001/ciudad/create
+	@PostMapping("/create")
 	public void insertCiudad(@RequestBody Ciudad c) {
 		ic.save(c);
 	}
 	
 	@GetMapping("/all")
 	public List<Ciudad>findAllCiudades() {
-		return ic.findAll();
+		List<Ciudad> l = ic.findAll();
+		if (l.isEmpty() || l.equals(null)) {
+			throw new RuntimeException("No hay ciudades registradas");
+		} else {
+			return l;
+		}
 	}
 	
 	@GetMapping("/find/{id}")
 	public Optional<Ciudad> findCiudad(@PathVariable("id") long id) {
-		return ic.findById(id);
+		Optional<Ciudad> ci =  ic.findById(id);
+		if (!ci.equals(null)) {
+			return ci;
+		} else {
+			throw new RuntimeException("Ciudad identificada con el ID: "+id+" no encontrado");
+		}
 	}
 	
 	@GetMapping("/count")
 	public long coundCiudades() {
-		return ic.count();
+		long c = ic.count();
+		if (c != 0) {
+			return c;
+		} else {
+            throw new RuntimeException("No hay ciudades registradas");
+		}
 	}
 	
 	@DeleteMapping("/delete/{id}")
 	public void deleteCiudad(@PathVariable("id") long id) {
-		ic.deleteById(id);
+		Optional<Ciudad> c = ic.findById(id);
+		if (c.equals(null)) {
+            throw new RuntimeException("Ciudad identificada con el ID: "+id+" no encontrado");
+		} else {
+			ic.deleteById(id);
+		}
+		
 	}
 	
 	@PutMapping("/update")
 	public void updateCiudad(@RequestBody Ciudad c) {
-		ic.save(c);
+		Optional<Ciudad> ci = ic.findById(c.getId());
+		if (ci.equals(null)) {
+            throw new RuntimeException("Ciudad identificada con el ID: "+c.getId()+" no encontrado");
+		} else {
+			ic.save(c);
+		}
+		
 	}
 }

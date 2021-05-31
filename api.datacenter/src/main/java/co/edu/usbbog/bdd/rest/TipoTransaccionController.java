@@ -21,36 +21,58 @@ public class TipoTransaccionController {
 	@Autowired
 	private ITipoTransaccion itt;
 	
-	//GET POST PUT DELETE ---> 200 = OK, 400, 404
-	
-
-	@PostMapping("/create") //localhost:3001/TipoTransaccion/create
+	@PostMapping("/create") 
 	public void insertTipoTransaccion(@RequestBody TipoTransaccion tt) {
 		itt.save(tt);
 	}
 	
 	@GetMapping("/all")
 	public List<TipoTransaccion>findAllTipoTransacciones() {
-		return itt.findAll();
+		List<TipoTransaccion> l = itt.findAll();
+		if (l.isEmpty() || l.equals(null)) {
+			throw new RuntimeException("No hay tipos de transacciones registradas");
+		} else {
+			return l;
+		}
 	}
 	
 	@GetMapping("/find/{id}")
 	public Optional<TipoTransaccion> findTipoTransaccion(@PathVariable("id") long id) {
-		return itt.findById(id);
+		Optional<TipoTransaccion> tt = itt.findById(id);
+		if (!tt.equals(null)) {
+			return tt;
+		}else {
+            throw new RuntimeException("Tipo de Tramsaccion identificada con el ID: "+id+" no encontrado");
+		}
 	}
 	
 	@GetMapping("/count")
 	public long coundTipoTransacciones() {
-		return itt.count();
+		long c =  itt.count();
+		if (c != 0) {
+			return c;
+		} else {
+            throw new RuntimeException("No hay tipos de transacciones registradas");
+		}
 	}
 	
 	@DeleteMapping("/delete/{id}")
 	public void deleteTipoTransaccion(@PathVariable("id") long id) {
-		itt.deleteById(id);
+		Optional<TipoTransaccion> tt = itt.findById(id);
+		if (!tt.equals(null)) {
+			itt.deleteById(id);
+		}else {
+            throw new RuntimeException("Tipo de Tramsaccion identificada con el ID: "+id+" no encontrado");
+		}
 	}
 	
 	@PutMapping("/update")
 	public void updateTipoTransaccion(@RequestBody TipoTransaccion tt) {
-		itt.save(tt);
+		Optional<TipoTransaccion> t = itt.findById(tt.getId());
+		if (!t.equals(null)) {
+			itt.save(tt);
+		}else {
+            throw new RuntimeException("Tipo de Tramsaccion identificada con el ID: "+tt.getId()+" no encontrado");
+		}
 	}
 }

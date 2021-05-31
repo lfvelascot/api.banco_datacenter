@@ -1,0 +1,545 @@
+{
+	"info": {
+		"_postman_id": "a13bf103-f1fd-481a-a631-79d426355941",
+		"name": "API datacenter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Insert Ciudad",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":101,\r\n    \"nombre\":\"Bogotá\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3003/ciudad/create",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"ciudad",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find all ciudad",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3003/ciudad/all",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"ciudad",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Ciudad",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3003/ciudad/find/101",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"ciudad",
+						"find",
+						"101"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Count ciudad",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3003/ciudad/count",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"ciudad",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update ciudad",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":102,\r\n    \"nombre\":\"Medellin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3003/ciudad/update",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"ciudad",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Tipo Transaccion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":3,\r\n    \"nombre\":\"tipo transaccion\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3003/tipotransaccion/create",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"tipotransaccion",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Tipo Transaccion",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3003/tipotransaccion/find/3",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"tipotransaccion",
+						"find",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find All tipo transaccion",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3003/tipotransaccion/all",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"tipotransaccion",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Count Tipo Transaccion",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3003/tipotransaccion/count",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"tipotransaccion",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Tipo Transaccion",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":3,\r\n    \"nombre\":\"tipo transaccion 3\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3003/tipotransaccion/update",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"tipotransaccion",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Tipo Transaccion",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3003/tipotransaccion/delete/3",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"tipotransaccion",
+						"delete",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Cuenta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"num\":302,\r\n\"saldo\":1000.00\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3003/cuenta/create",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"cuenta",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Ciudad",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3003/ciudad/delete/102",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"ciudad",
+						"delete",
+						"102"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find all Cuenta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3003/cuenta/all",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"cuenta",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Cuenta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3003/cuenta/find/302",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"cuenta",
+						"find",
+						"302"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Count Cuenta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3003/cuenta/count",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"cuenta",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Cuenta",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"num\":302,\r\n\"saldo\":1000.00\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3003/cuenta/update",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"cuenta",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Cuenta",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3003/cuenta/delete/301",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"cuenta",
+						"delete",
+						"301"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Auditoria",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"id\":401,\r\n\"valor\":1000,\r\n\"fecha\":\"2020-11-16 15:57:49\",\r\n\"tipo\":{\r\n\"id\": 1,\r\n\"nombre\": \"Retiro\"\r\n},\r\n\"cuenta\":{\r\n\"num\":302,\r\n\"cedula\":12345,\r\n\"nombre\":\"Felipe\",\r\n\"telefono\":\"3144432469\",\r\n\"saldo\":1000.00,\r\n\"ciudad\":{\r\n    \"id\":102,\r\n    \"nombre\":\"Medellin\"\r\n}\r\n},\r\n\"ciudad\":{\r\n    \"id\":102,\r\n    \"nombre\":\"Medellin\"\r\n}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3003/auditoria/create",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"auditoria",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find all auditoria",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3003/auditoria/all",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"auditoria",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Auditoria",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3003/auditoria/find/401",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"auditoria",
+						"find",
+						"401"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Count Auditoria",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3003/auditoria/count",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"auditoria",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Auditoria",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"id\":401,\r\n\"valor\":200,\r\n\"fecha\":\"2020-11-16 15:57:49\",\r\n\"tipo\":{\r\n\"id\": 2,\r\n\"nombre\": \"Consignacion\"\r\n},\r\n\"cuenta\":{\r\n\"num\":302,\r\n\"cedula\":12345,\r\n\"nombre\":\"Felipe\",\r\n\"telefono\":\"3144432469\",\r\n\"saldo\":1000.00,\r\n\"ciudad\":{\r\n    \"id\":102,\r\n    \"nombre\":\"Medellin\"\r\n}\r\n}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3002/transaccion/update",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"transaccion",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Auditoria",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3003/auditoria/delete/401",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"auditoria",
+						"delete",
+						"401"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
