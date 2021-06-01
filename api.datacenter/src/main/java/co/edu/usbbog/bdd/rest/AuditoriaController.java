@@ -49,7 +49,7 @@ public class AuditoriaController {
 	@GetMapping("/count")
 	public long coundTransaccion() {
 		long c = ia.count();
-		if (c == 0) {
+		if (c != 0) {
 			return c;
 		} else {
 			throw new RuntimeException("No hay auditorias registradas");
